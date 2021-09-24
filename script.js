@@ -55,10 +55,10 @@ function generatePassword() {
     }
 
     // Check that there is a character set, maybe better to do with null?
-    // if (includeLC === false && includeUC === false && includeNC === false && includeSC === false ) {
-    //     alert("Please include at least one character set!");
-    //     generatePassword();
-    // }
+    if (includeLC === false && includeUC === false && includeNC === false && includeSC === false ) {
+        alert("Please include at least one character set!");
+        generatePassword();
+    }
 
     // For each loop, select a random character and append to the password
     for (let i = 0; i < pwLength; i++) {
