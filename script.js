@@ -19,7 +19,7 @@ var minChars = 8;
 var maxChars = 128;
 
 
-const numerals = [0,1,2,3,4,5,6,7,8,9];
+const numerals = Array.from(Array(10).keys());
 const letters = "qwertyuiopasdfghjklzxcvbnm";
 const lettersLC = letters.split('');
 const lettersUC = letters.toUpperCase().split('');
