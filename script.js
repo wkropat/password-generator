@@ -1,54 +1,76 @@
-// GIVEN I need a new, secure password
-// WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria
-// WHEN prompted for password criteria
-// THEN I select which criteria to include in the password
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
-// WHEN asked for character types to include in the password
-// THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
-
+// Connect the button on the page to the password generator
 var pwGenerator = document.querySelector("pwGenerator");
+
+// Initialize variables at min/max respectively
 var minChars = 8;
 var maxChars = 128;
 
+// Create character set arrays
 
-const numerals = Array.from(Array(10).keys());
 const letters = "qwertyuiopasdfghjklzxcvbnm";
 const lettersLC = letters.split('');
 const lettersUC = letters.toUpperCase().split('');
+const lettersNC = Array.from(Array(10).keys());
+const specChar = "~!@#$%^&*()_?";
+const lettersSC = specChar.split('');
 
-
+const charSet = [];
+const pwArray = [];
 
 function generatePassword() {
 
+    // Prompt for minimum and maximum password lengths
+    // Handles exceptions if length does not meet requirements
     minChars = prompt("Minimum number of characters?");
     if (minChars < 8) {
-        minChars = prompt("Please input a number greater than 8.")
+        minChars = prompt("Please input a number greater than 8.");
     }
-
     maxChars = prompt("Maximum number of characters?");
     if (maxChars > 128) {
-        minChars = prompt("Please input a number less than 128.")
+        minChars = prompt("Please input a number less than 128.");
     }
 
+    // Calculate password length as a random number between min and max
+    const pwLength = Math.floor(Math.random() * (maxChars - minChars)) + minChars;
+    console.log(pwLength)
+    // Prompt for character set inclusions
     includeUC = confirm("Include upper case?");
-    includeLC = confirm("Include lower case?");
-    includeNC = confirm("Include numeric characters?");
-    includeSC = confirm("Include special characters?");
-
-    if (includeLC == false && includeUC == false && includeNC == false && includeSC == false ) {
-        alert("Please include at least one character set!")
-        generatePassword()
+    if (includeUC) {
+        charSet = charSet.concat(lettersUC);
+    
     }
+    includeLC = confirm("Include lower case?");
+    if (includeLC) {
+        charSet = charSet.concat(lettersLC);
+    }
+    includeNC = confirm("Include numeric characters?");
+    if (includeNC) {
+        charSet = charSet.concat(lettersNC);
+    }
+    includeSC = confirm("Include special characters?");
+    if (includeSC) {
+        charSet = charSet.concat(lettersSC);
+    }
+
+    console.log(charSet);
+    // Check that there is a character set, maybe better to do with null?
+    if (includeLC == false && includeUC == false && includeNC == false && includeSC == false ) {
+        alert("Please include at least one character set!");
+        generatePassword();
+    }
+
+    // For each loop, select a random character and append to the password
+    for (let i =0; i < pwLength, i++;) {
+        var randomIndex = Math.floor(Math.random()*charSet.length());
+        var randomCharacter = charSet[randomIndex];
+        pwArray.push(randomCharacter);
+        console.log(randomCharacter);
+    }
+
+    var password = pwArray.join();
+    
+    // Display the password as an alert
+    alert(password);
 
 }
 
-
-//   document.getElementById("button").innerHTML = txt;
