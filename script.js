@@ -71,7 +71,7 @@ function generatePassword() {
     password = pwArray.join('');
     
     // Display the password as an alert
-    alert(password);
+    alert("Your password is: " + password);
 
 }
 
