@@ -13,9 +13,11 @@ const lettersUC = letters.toUpperCase().split('');
 const lettersNC = Array.from(Array(10).keys());
 const specChar = "~!@#$%^&*()_?";
 const lettersSC = specChar.split('');
+var pwLength = 0;
 
-const charSet = [];
+var charSet = [];
 const pwArray = [];
+var password = "";
 
 function generatePassword() {
 
@@ -31,13 +33,13 @@ function generatePassword() {
     }
 
     // Calculate password length as a random number between min and max
-    const pwLength = Math.floor(Math.random() * (maxChars - minChars)) + minChars;
-    console.log(pwLength)
+    pwLength = Math.floor(Math.random() * (maxChars - minChars)) + minChars;
+
+
     // Prompt for character set inclusions
     includeUC = confirm("Include upper case?");
     if (includeUC) {
         charSet = charSet.concat(lettersUC);
-    
     }
     includeLC = confirm("Include lower case?");
     if (includeLC) {
@@ -52,12 +54,11 @@ function generatePassword() {
         charSet = charSet.concat(lettersSC);
     }
 
-    console.log(charSet);
     // Check that there is a character set, maybe better to do with null?
-    if (includeLC == false && includeUC == false && includeNC == false && includeSC == false ) {
-        alert("Please include at least one character set!");
-        generatePassword();
-    }
+    // if (includeLC === false && includeUC === false && includeNC === false && includeSC === false ) {
+    //     alert("Please include at least one character set!");
+    //     generatePassword();
+    // }
 
     // For each loop, select a random character and append to the password
     for (let i =0; i < pwLength, i++;) {
@@ -67,7 +68,7 @@ function generatePassword() {
         console.log(randomCharacter);
     }
 
-    var password = pwArray.join();
+    password = pwArray.join();
     
     // Display the password as an alert
     alert(password);
