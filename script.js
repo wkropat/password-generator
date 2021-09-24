@@ -16,7 +16,7 @@ const lettersSC = specChar.split('');
 var pwLength = 0;
 
 var charSet = [];
-const pwArray = [];
+var pwArray = [];
 var password = "";
 
 function generatePassword() {
@@ -61,14 +61,14 @@ function generatePassword() {
     // }
 
     // For each loop, select a random character and append to the password
-    for (let i =0; i < pwLength, i++;) {
-        var randomIndex = Math.floor(Math.random()*charSet.length());
-        var randomCharacter = charSet[randomIndex];
-        pwArray.push(randomCharacter);
-        console.log(randomCharacter);
+    for (let i = 0; i < pwLength; i++) {
+
+        var randomIndex = Math.floor(Math.random() * charSet.length);
+        var randomCharacter = charSet[randomIndex]; 
+        pwArray = pwArray.concat(randomCharacter);
     }
 
-    password = pwArray.join();
+    password = pwArray.join('');
     
     // Display the password as an alert
     alert(password);
