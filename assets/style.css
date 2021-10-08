@@ -27,15 +27,16 @@ main {
 
 }
 
-#button {
+#pwGenerator {
     display:flex;
     background:var(--contrastColor);
     height:100px;   
     width:100px; 
     align-items: center;
     justify-content: center;
+    color:white;
 }
 
-#button:hover {
+#pwGenerator:hover {
     background:var(--contrastLight);
 }
