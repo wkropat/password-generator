@@ -25,7 +25,8 @@ function generatePassword() {
     // Handles exceptions if length does not meet requirements
     pwLength = prompt("How long should your password be?");
     if (pwLength < 8 || pwLength > 128) {
-        pwLength = prompt("Please input a number between 8 and 128.");
+        alert("Please input a number between 8 and 128.");
+        return "failed";
     }
 
     // Prompt for character set inclusions
