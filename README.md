@@ -1,6 +1,6 @@
 # password-generator
 
-Simple JavaScript password generator
+Simple JavaScript password generator. Based on a series of user inputs via prompts, we gather the criteria to generate secure passwords based on user preference.
 
 Github Repo: https://github.com/wkropat/password-generator
 Deployed: https://wkropat.github.io/password-generator/
@@ -24,3 +24,9 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 ```
+
+## Screenshots
+
+![Live Website](./screenshot.PNG)
+![Prompt for input](./screenshot2.PNG)
+![Password Generated](./screenshot3.PNG)

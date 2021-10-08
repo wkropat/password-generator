@@ -23,34 +23,27 @@ function generatePassword() {
 
     // Prompt for minimum and maximum password lengths
     // Handles exceptions if length does not meet requirements
-    minChars = prompt("Minimum number of characters?");
-    if (minChars < 8) {
-        minChars = prompt("Please input a number greater than 8.");
+    pwLength = prompt("How long should your password be?");
+    if (pwLength < 8 || pwLength > 128) {
+        pwLength = prompt("Please input a number between 8 and 128.");
     }
-    maxChars = prompt("Maximum number of characters?");
-    if (maxChars > 128) {
-        minChars = prompt("Please input a number less than 128.");
-    }
-
-    // Calculate password length as a random number between min and max
-    pwLength = Math.floor(Math.random() * (maxChars - minChars)) + minChars;
-
 
     // Prompt for character set inclusions
     includeUC = confirm("Include upper case?");
-    if (includeUC) {
+    console.log(includeUC);
+    if (includeUC === true) {
         charSet = charSet.concat(lettersUC);
     }
     includeLC = confirm("Include lower case?");
-    if (includeLC) {
+    if (includeLC === true) {
         charSet = charSet.concat(lettersLC);
     }
     includeNC = confirm("Include numeric characters?");
-    if (includeNC) {
+    if (includeNC === true) {
         charSet = charSet.concat(lettersNC);
     }
     includeSC = confirm("Include special characters?");
-    if (includeSC) {
+    if (includeSC === true) {
         charSet = charSet.concat(lettersSC);
     }
 
@@ -62,13 +55,14 @@ function generatePassword() {
 
     // For each loop, select a random character and append to the password
     for (let i = 0; i < pwLength; i++) {
-
         var randomIndex = Math.floor(Math.random() * charSet.length);
         var randomCharacter = charSet[randomIndex]; 
         pwArray = pwArray.concat(randomCharacter);
     }
 
     password = pwArray.join('');
+    charSet = [];
+    pwArray = [];
     
     // Display the password as an alert
     alert(password);
